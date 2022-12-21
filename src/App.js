@@ -10,28 +10,27 @@ class App extends Component {
         {id:1,count:0,steps:4},
         {id:2,count:0,steps:6},
         {id:3,count:0,steps:10},
-    ],
-    total:0,
+    ]
 }
 
   increase = (id)=>{
-    this.setState({counters:this.state.counters.map((counter)=>{
+    this.setState(prevState =>({counters:prevState.counters.map((counter)=>{
       if(counter.id === id){
         return {...counter,count:counter.count+counter.steps}
       }
       return counter;
-    })})
+    })}))
   }
 
   decrease = (id)=>{
-    this.setState({counters:this.state.counters.map((counter)=>{
+    this.setState(prevState =>({counters:prevState.counters.map((counter)=>{
       if(counter.id === id){
         if(counter.count>0){
           return {...counter,count:counter.count-counter.steps}
         }
       }
       return counter;
-    })})
+    })}))
   }
   
   render(){
